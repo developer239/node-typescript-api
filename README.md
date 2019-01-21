@@ -1,8 +1,8 @@
 # Node Typescript API
 
-Example backend API.
-
 Demo application [is running here](https://node-typescript-api.herokuapp.com/) (it might take a while before the free server wakes up)
+
+📘 API is documented [here](https://node-typescript-api.herokuapp.com/docs).
 
 ## Development
 

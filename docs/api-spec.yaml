@@ -1,0 +1,47 @@
+openapi: '3.0'
+
+info:
+  version: '0.0.1'
+  title: Node Typscript API
+
+servers:
+  - url: /
+
+paths:
+  /:
+    get:
+      summary: Home
+      responses:
+        '200':
+          content:
+            text/plain:
+              examples:
+                response:
+                  value: Node Typescript API 🌍
+  /secured:
+    get:
+      summary: Secured Route
+      security:
+        - UserAuth: []
+      responses:
+        '200':
+          content:
+            text/plain:
+              examples:
+                response:
+                  value: Node Typescript API 🌍 [secured resource]
+        '401':
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Invalid credentials
+
+components:
+  securitySchemes:
+    UserAuth:
+      type: http
+      scheme: jwt
