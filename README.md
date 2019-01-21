@@ -1,5 +1,7 @@
 # Node Typescript API
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/developer239/node-typescript-api.svg?token=76d75cc9efd4f1141c5df424f2a8d016654313d2766e2704b0985a28a794002b&ts=1548104970009)](https://greenkeeper.io/)
+
 Demo application [is running here](https://node-typescript-api.herokuapp.com/) (it might take a while before the free server wakes up)
 
 📘 API is documented [here](https://node-typescript-api.herokuapp.com/docs).
