@@ -4,7 +4,6 @@ import ip from 'ip'
 import Koa from 'koa'
 import koaBody from 'koa-bodyparser'
 import compose from 'koa-compose'
-import enforceHttps from 'koa-sslify'
 import koaCors from 'kcors'
 import config from '~/config'
 import routerMiddleware from '~/router'
@@ -25,12 +24,7 @@ const app = createServer([
     ],
     maxAge: 3600,
   }),
-  ...(process.env.NODE_ENV === 'production' ? [
-    enforceHttps({
-        trustProtoHeader: true,
-      })
-  ] : []) as any,
-  koaBody(),
+  koaBody() as any,
   routerMiddleware,
 ])
 
