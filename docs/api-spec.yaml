@@ -26,10 +26,13 @@ paths:
       responses:
         '200':
           content:
-            text/plain:
-              examples:
-                response:
-                  value: Node Typescript API 🌍 [secured resource]
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    description: Node Typescript API 🌍 [secured resource]
         '401':
           content:
             application/json:
