@@ -1,10 +1,9 @@
 import jsonschema from 'jsonschema'
-import { Context } from 'koa'
 import logger from '~/utils/logger'
 import errors from '~/utils/errors'
 
 const validate = (schema: any) => (
-  ctx: Context | ({ request: { body: any }, state?: any }),
+  ctx: any,
   next?: () => Promise<any>
 ) => {
   const validator = new jsonschema.Validator()

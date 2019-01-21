@@ -19,7 +19,7 @@ build:
 	$(call log, "Building")
 	yarn build
 
-dev:
+watch:
 	$(call log, "Starting dev server")
 	yarn dev
 
