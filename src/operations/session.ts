@@ -1,14 +1,15 @@
 import moment from 'moment'
-import mailer from '~/utils/mailer'
+import nanoid from 'nanoid'
+import mailer from '~/services/mailer'
 import userRepository from '~/repositories/user'
 import refreshTokenRepository from '~/repositories/refreshToken'
 import errors from '~/utils/errors'
-import crypto from '~/utils/crypto'
+import crypto from '~/services/crypto'
 import config from '~/config'
 import { IRefreshToken, IUserDB } from '~/database/sql/models'
 
 async function login(input: Pick<IUserDB, 'email' | 'password'>) {
-  const user = await userRepository.findByEmail(input.email.toLowerCase())
+  const user = await userRepository.findByEmail(input.email)
   if (!user) {
     throw errors.invalidCredentials()
   }
@@ -35,16 +36,14 @@ async function passwordForgot(input: Pick<IUserDB, 'email'>) {
     throw errors.notFoundError(`There is no user with email ${input.email}`)
   }
 
-  // TODO: Generate token with crypto
-  const newToken = 'someRandomToken'
-  const resetPasswordToken = newToken.toString()
+  const newToken = nanoid(15)
+  const resetPasswordToken = newToken
   const resetPasswordTokenExpires = moment().add(20, 'm').toISOString()
-  await userRepository.patchById(1, {
+  await userRepository.patchById(user.id, {
     resetPasswordToken,
     resetPasswordTokenExpires,
   })
 
-  // TODO: Create mailer service
   const redirectUrl = config.email.redirectUrl
   await mailer.send({
     to: user.email,

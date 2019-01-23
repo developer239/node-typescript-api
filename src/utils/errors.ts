@@ -1,5 +1,5 @@
 import Boom from 'boom'
-import logger from "~/utils/logger";
+import logger from "~/services/logger";
 
 const handleError = (message: string, data: { code: number }, error?: string): Boom => {
   if (data.code === 500) {

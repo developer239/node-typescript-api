@@ -1,18 +1,18 @@
 import userRepository from '~/repositories/user'
 import refreshTokenRepository from '~/repositories/refreshToken'
 import errors from '~/utils/errors'
-import crypto from '~/utils/crypto'
+import crypto from '~/services/crypto'
 import { IUserDB } from '~/database/sql/models'
 
 async function signUp(input: Pick<IUserDB, 'email' | 'password'>) {
   const user = {
-    email: input.email.toLowerCase(),
+    email: input.email,
     password: await crypto.hashPassword(input.password),
   }
 
   const doesUserExist = await userRepository.findByEmail(user.email)
   if (doesUserExist) {
-    throw errors.conflictError(`Email ${input.email.toLowerCase()} is taken.`)
+    throw errors.conflictError(`Email ${input.email} is taken.`)
   }
 
   const createdUser = await userRepository.create(user)

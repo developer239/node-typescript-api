@@ -1,37 +1,25 @@
-import Koa from 'koa'
 import compose from 'koa-compose'
 import validate from '~/middleware/validate'
 import schema from '~/validations/schemas/session'
 import operations from '~/operations/session'
+import { defaultControllerHandler } from '~/utils/controller'
 
 export const login = compose([
   validate(schema.login),
-  async (ctx: Koa.Context) => {
-    const body = ctx.state.validatedBody
-    ctx.body = await operations.login(body)
-  },
+  defaultControllerHandler(operations.login),
 ])
 
 export const passwordForgot = compose([
   validate(schema.passwordForgot),
-  async (ctx: Koa.Context) => {
-    const body = ctx.state.validatedBody
-    ctx.body = await operations.passwordForgot(body)
-  },
+  defaultControllerHandler(operations.passwordForgot),
 ])
 
 export const passwordReset = compose([
   validate(schema.passwordReset),
-  async (ctx: Koa.Context) => {
-    const body = ctx.state.validatedBody
-    ctx.body = await operations.passwordReset(body)
-  },
+  defaultControllerHandler(operations.passwordReset),
 ])
 
 export const token = compose([
   validate(schema.token),
-  async (ctx: Koa.Context) => {
-    const body = ctx.state.validatedBody
-    ctx.body = await operations.token(body)
-  },
+  defaultControllerHandler(operations.token),
 ])

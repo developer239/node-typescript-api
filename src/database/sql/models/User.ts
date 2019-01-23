@@ -61,15 +61,15 @@ export class User extends Model {
   public id: number
   public email: string
   public password: string
-  public accessToken: string
   public resetPasswordToken: string | null
   public resetPasswordTokenExpires: string | null
+  public createdAt: string
+  public updatedAt: string
 
   public $formatJson(json: IUserDB): IUser {
     return R.pick([
       'id',
       'email',
-      'accessToken',
     ], json)
   }
 }

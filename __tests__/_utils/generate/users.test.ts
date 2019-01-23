@@ -1,19 +1,16 @@
-import crypto from '~/utils/crypto'
-import { generateUser } from './users'
+import crypto from '~/services/crypto'
+import { generateUser } from '~/database/sql/fixtures'
+import faker from '~/services/faker'
 
 describe('generateUser', () => {
   test('it returns random data', async () => {
     const user = await generateUser()
     const doesPasswordMatch = await crypto.comparePasswords(
-      'fakepassword',
-      user.password!
+      faker.internet.password(),
+      user.password!,
     )
-
-    expect(user).toMatchObject({
-      email: 'fake@email.com',
-    })
-    expect(doesPasswordMatch)
-      .toEqual(true)
+    expect(doesPasswordMatch).toEqual(true)
+    expect(user).toMatchObject({ email: faker.internet.email() })
   })
 
   test('it returns provided data', async () => {

@@ -1,6 +1,7 @@
 import { truncate } from '~test/_utils/database'
 import { createRefreshToken } from './refreshTokens'
 import { createUser } from './users'
+import { generateRefreshToken } from '~/database/sql/fixtures'
 
 describe('[utils] Database RefreshTokens', () => {
   afterEach(async () => {
@@ -10,12 +11,11 @@ describe('[utils] Database RefreshTokens', () => {
   describe('createRefreshToken', () => {
     test('it creates a refresh token', async () => {
       await createUser()
-      const refreshTokenData = { userId: 1, token: 'someFakeToken' }
-      const refreshToken = await createRefreshToken(refreshTokenData)
-      const refreshTokenJson = refreshToken.toJSON()
-      expect(refreshTokenJson).toEqual({
+      const expectedData = await generateRefreshToken()
+      const refreshTokenData = await createRefreshToken()
+      expect(refreshTokenData).toEqual({
         id: 1,
-        ...refreshTokenData,
+        ...expectedData,
       })
     })
   })

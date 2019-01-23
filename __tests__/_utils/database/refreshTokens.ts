@@ -1,6 +1,7 @@
 import '~/database/sql'
-import { IRefreshTokenDB, RefreshToken } from '~/database/sql/models'
-import { generateRefreshToken } from '~test/_utils/generate'
+import { generateRefreshToken } from '~/database/sql/fixtures'
+import refreshTokenRepo from '~/repositories/refreshToken'
+import { IRefreshToken } from '~/database/sql/models'
 
-export const createRefreshToken = async (data: Partial<IRefreshTokenDB>) =>
-  RefreshToken.query().insert(await generateRefreshToken(data))
+export const createRefreshToken = async (data?: Partial<IRefreshToken>) =>
+  (await refreshTokenRepo.create(await generateRefreshToken(data))).toJSON() as IRefreshToken

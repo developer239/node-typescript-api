@@ -54,6 +54,8 @@ export class RefreshToken extends Model {
   public id: number
   public userId: number
   public token: string
+  public createdAt: string
+  public updatedAt: string
 
   public $formatJson(json: IRefreshTokenDB): IRefreshToken {
     return R.pick([

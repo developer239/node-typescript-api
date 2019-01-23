@@ -1,5 +1,7 @@
 import '~/database/sql'
-import { IUserDB, User } from '~/database/sql/models'
-import { generateUser } from '~test/_utils/generate'
+import userRepo from '~/repositories/user'
+import { generateUser } from '~/database/sql/fixtures'
+import { IUser, IUserDB } from '~/database/sql/models'
 
-export const createUser = async (data?: Partial<IUserDB>) => User.query().insert(await generateUser(data))
+export const createUser = async (data?: Partial<IUserDB>) =>
+  (await userRepo.create(await generateUser(data))).toJSON() as IUser

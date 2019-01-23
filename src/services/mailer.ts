@@ -1,7 +1,7 @@
 import sendgrid from '@sendgrid/mail'
 import { MailData } from '@sendgrid/helpers/classes/mail'
 import config from '~/config'
-import { Omit } from '~/types'
+import { Omit } from 'src/types'
 
 sendgrid.setApiKey(config.email.token);
 

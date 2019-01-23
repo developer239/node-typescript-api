@@ -19,7 +19,6 @@ const config = {
   },
   server: {
     port: parseInt(process.env.PORT!, 10) || 8080,
-    url: process.env.SERVER_URL || 'localhost',
   },
   logger: {
     enabled: true,

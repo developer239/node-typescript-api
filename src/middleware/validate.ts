@@ -1,5 +1,5 @@
 import jsonschema from 'jsonschema'
-import logger from '~/utils/logger'
+import logger from '~/services/logger'
 import errors from '~/utils/errors'
 
 const validate = (schema: any) => (
