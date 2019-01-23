@@ -30,6 +30,11 @@ Run node server:
 1. `make node_modules`
 2. `make watch`
 
+Define `env` variables:
+
+1. `cp .env.development.template .env.development`
+2. If you want to have password reset working then you must set `EMAIL_TOKEN` variable. You can find more information on [sendgrid.com](https://sendgrid.com/)
+
 Now you can open [http://localhost:8080](http://localhost:8080) in your browser.
 
 ### Helpful Commands
