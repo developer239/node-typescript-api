@@ -11,6 +11,8 @@ paths:
   /:
     get:
       summary: Home
+      tags:
+        - Welcome
       responses:
         '200':
           content:
@@ -21,6 +23,8 @@ paths:
   /secured:
     get:
       summary: Secured Route
+      tags:
+        - Welcome
       security:
         - UserAuth: []
       responses:
@@ -32,7 +36,7 @@ paths:
                 properties:
                   message:
                     type: string
-                    description: Node Typescript API 🌍 [secured resource]
+                    example: Node Typescript API 🌍 [secured resource]
         '401':
           content:
             application/json:
@@ -42,6 +46,218 @@ paths:
                   message:
                     type: string
                     description: Invalid credentials
+  /session/user:
+    post:
+      summary: Sign In
+      tags:
+        - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        401:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  email:
+                    type: string
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+
+  /session/password-forgot:
+    post:
+      summary: Password Forgot
+      tags:
+        - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              properties:
+                email:
+                  type: string
+      responses:
+        404:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      email:
+                        type: string
+
+  /session/password-reset:
+    post:
+      summary: Password Reset
+      tags:
+        - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - token
+              - password
+              properties:
+                token:
+                  type: string
+                password:
+                  type: string
+      responses:
+        404:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        400:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  email:
+                    type: string
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
+
+  /session/token:
+    post:
+      summary: Refresh Access Token
+      tags:
+        - Session
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - userId
+              - refreshToken
+              properties:
+                userId:
+                  type: number
+                refreshToken:
+                  type: string
+      responses:
+        401:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+
+  /users:
+    post:
+      summary: Sign Up
+      tags:
+        - Users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - password
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        409:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  email:
+                    type: string
+                  accessToken:
+                    type: string
+                  refreshToken:
+                    type: string
 
 components:
   securitySchemes:
