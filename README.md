@@ -10,6 +10,8 @@ Demo application [is running here](https://node-typescript-api.herokuapp.com/) (
 
 📘 API is documented [here](https://node-typescript-api.herokuapp.com/docs).
 
+📗 Example frontend application is [here](https://github.com/developer239/node-typescript-react-web).
+
 ## Development
 
 System Dependencies:
