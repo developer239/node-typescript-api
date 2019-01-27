@@ -7,6 +7,7 @@ import errors from '~/utils/errors'
 import crypto from '~/services/crypto'
 import config from '~/config'
 import { IRefreshToken, IUserDB } from '~/database/sql/models'
+import logger from '~/services/logger'
 
 async function login(input: Pick<IUserDB, 'email' | 'password'>) {
   const user = await userRepository.findByEmail(input.email)
@@ -45,14 +46,19 @@ async function passwordForgot(input: Pick<IUserDB, 'email'>) {
   })
 
   const redirectUrl = config.email.redirectUrl
+  const emailText = 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
+    'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
+    redirectUrl + '/password-reset/?token=' + newToken + '\n\n' +
+    'If you did not request this, please ignore this email and your password will remain unchanged.\n'
+
   await mailer.send({
     to: user.email,
     subject: 'NODE TYPESCRIPT API PASSWORD RESET',
-    text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-      'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-      'http://' + redirectUrl + '/password-reset/?token=' + newToken + '\n\n' +
-      'If you did not request this, please ignore this email and your password will remain unchanged.\n',
+    text: emailText,
   })
+
+  logger.info(`Sending email to : ${user.email}`)
+  logger.info(emailText)
 
   return {
     user,
