@@ -15,7 +15,8 @@
     "test": "node_modules/.bin/jest -i --forceExit --detectOpenHandles",
     "test:coverage": "node_modules/.bin/jest -i --forceExit --detectOpenHandles --coverage",
     "heroku-postbuild": "npm run build && npm run db:migrate",
-    "prod": "node build"
+    "prod": "node build",
+    "lint:ts": "tslint './src/**/*.{ts,tsx}'"
   },
   "type-check": "tsc",
   "lint-staged": {
