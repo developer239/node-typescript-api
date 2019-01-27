@@ -2,8 +2,8 @@ export const login = {
   type: 'Object',
   required: true,
   properties: {
-    email: { type: 'string', required: true, format: 'email', maxLength: 80 },
-    password: { type: 'string', required: true, minLength: 5, maxLength: 80 },
+    email: { type: 'string', required: true },
+    password: { type: 'string', required: true },
   },
 }
 

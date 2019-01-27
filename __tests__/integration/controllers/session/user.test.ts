@@ -19,6 +19,24 @@ describe('[controller] Session', () => {
       done()
     })
 
+    test('should handle empty login form', async (done) => {
+      const response = await app()
+        .post(
+          '/session/user',
+          {
+            email: '',
+            password: '',
+          },
+        )
+
+      expectDefault(
+        response,
+        { message: 'Invalid credentials' },
+        401,
+      )
+      done()
+    })
+
     test('should handle missing user', async (done) => {
       const response = await app()
         .post(
