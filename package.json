@@ -9,6 +9,7 @@
   "scripts": {
     "build": "rm -rf build && node_modules/.bin/babel src --out-dir build --copy-files --extensions '.js,.ts'",
     "dev": "node_modules/.bin/nodemon -L --exec \"node_modules/.bin/babel-node --extensions '.js,.ts' src/index.ts\"",
+    "db:create:migration": "node_modules/.bin/knex migrate:make --knexfile=./knexfile.ts",
     "db:migrate": "node_modules/.bin/knex migrate:latest --knexfile=./knexfile.ts",
     "db:rollback": "node_modules/.bin/knex migrate:rollback --knexfile=./knexfile.ts",
     "db:seed": "node_modules/.bin/knex seed:run --knexfile=./knexfile.ts",

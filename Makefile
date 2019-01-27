@@ -23,6 +23,10 @@ watch:
 	$(call log, "Starting dev server")
 	yarn dev
 
+db-create-migration:
+	$(call log, "Creating migration")
+	yarn db:create:migration -- ${name}
+
 db-migrate:
 	$(call log, "Database migration")
 	yarn db:migrate
@@ -53,6 +57,7 @@ rules := \
 	node_modules \
 	build \
 	dev \
+	db-create-migration \
 	db-migrate \
 	db-rollback \
 	db-reset \
