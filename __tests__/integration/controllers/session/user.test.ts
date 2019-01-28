@@ -1,7 +1,7 @@
 import app from '~test/_utils/requestPublic'
 import { truncate } from '~test/_utils/database'
 import { createUser } from '~test/_utils/database/users'
-import mockFaker from '~/services/faker'
+import faker from '~/services/faker'
 import crypto from '~/services/crypto'
 import { expectDefault, expectInvalidData } from '~test/_utils/expectHelper'
 
@@ -74,13 +74,16 @@ describe('[controller] Session', () => {
     })
 
     test('should handle valid credentials', async (done) => {
-      const user = await createUser()
+      const password = faker.internet.password()
+      const hashedPassword = await crypto.hashPassword(password)
+      const user = await createUser({ password: hashedPassword })
+
       const response = await app()
         .post(
           '/session/user',
           {
             email: user.email,
-            password: mockFaker.internet.password(),
+            password,
           },
         )
 

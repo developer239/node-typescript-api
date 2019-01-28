@@ -2,7 +2,6 @@ import moment from 'moment'
 import app from '~test/_utils/requestPublic'
 import { truncate } from '~test/_utils/database'
 import { createUser } from '~test/_utils/database/users'
-import mockFaker from '~/services/faker'
 import crypto from '~/services/crypto'
 import { expectDefault, expectInvalidData } from '~test/_utils/expectHelper'
 
@@ -44,7 +43,7 @@ describe('[controller] Session', () => {
     })
 
     test('should update user password', async (done) => {
-      await createUser()
+      const user = await createUser()
       const response = await app()
         .post(
           '/session/password-reset',
@@ -58,7 +57,7 @@ describe('[controller] Session', () => {
         response,
         {
           id: 1,
-          email: mockFaker.internet.email(),
+          email: user.email,
           accessToken: await crypto.generateAccessToken(1),
           refreshToken: await crypto.generateRefreshToken(1),
         },
