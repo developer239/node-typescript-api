@@ -1,5 +1,5 @@
 module.exports = {
-  'setupTestFrameworkScriptFile': '<rootDir>/__tests__/_utils/init.ts',
+  'setupFilesAfterEnv': ['<rootDir>/__tests__/_utils/init.ts'],
   'moduleFileExtensions': ['js', 'jsx', 'json', 'ts', 'tsx'],
   'verbose': true,
   'collectCoverage': false,
