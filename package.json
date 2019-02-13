@@ -74,7 +74,7 @@
     "@types/jsonschema": "1.1.1",
     "@types/jsonwebtoken": "8.3.0",
     "@types/kcors": "2.2.3",
-    "@types/knex": "0.15.1",
+    "@types/knex": "0.15.2",
     "@types/koa": "2.0.48",
     "@types/koa-bodyparser": "5.0.2",
     "@types/koa-compose": "3.2.3",
