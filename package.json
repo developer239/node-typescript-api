@@ -46,7 +46,7 @@
     "koa-static": "5.0.0",
     "moment": "2.24.0",
     "nanoid": "2.0.1",
-    "objection": "1.6.3",
+    "objection": "1.6.4",
     "pg": "7.9.0",
     "pino": "5.11.2",
     "ramda": "0.26.1",
