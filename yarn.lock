@@ -6639,10 +6639,10 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
-redoc@2.0.0-rc.4:
-  version "2.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/redoc/-/redoc-2.0.0-rc.4.tgz#635a26a6600f1546e4d8008cc9674e35eeddb5cb"
-  integrity sha512-PqS82iNsnkU8750B8bxApjirxznxYZqbU1fMFc6+AEufCsnXTGSg61ZP3N2FKNoyOXA+uEG/cyLu49N5yBTrXg==
+redoc@2.0.0-rc.7:
+  version "2.0.0-rc.7"
+  resolved "https://registry.yarnpkg.com/redoc/-/redoc-2.0.0-rc.7.tgz#ef27c64ea9fbc0aa5b1135dc85d59b64eef87396"
+  integrity sha512-+2OPuEuUDzwt/R6ZXpBuCMy7aCo0k2pQKfOHq6eG+84QO9+y0ASr91WGmaHUtsvDaItsyrfmhW35NjXIbps2ug==
   dependencies:
     classnames "^2.2.6"
     decko "^1.2.0"
