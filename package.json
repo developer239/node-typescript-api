@@ -85,7 +85,7 @@
     "@types/nanoid": "1.2.1",
     "@types/node": "12.0.3",
     "@types/pino": "5.8.7",
-    "@types/ramda": "0.26.9",
+    "@types/ramda": "0.26.12",
     "@types/sendgrid": "4.3.0",
     "@types/sinon": "7.0.12",
     "@types/superagent": "4.1.1",
