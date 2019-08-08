@@ -72,7 +72,7 @@
     "@types/ip": "1.1.0",
     "@types/jest": "24.0.13",
     "@types/jsonschema": "1.1.1",
-    "@types/jsonwebtoken": "8.3.2",
+    "@types/jsonwebtoken": "8.3.3",
     "@types/kcors": "2.2.3",
     "@types/knex": "0.16.1",
     "@types/koa": "2.0.48",
