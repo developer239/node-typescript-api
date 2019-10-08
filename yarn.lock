@@ -1518,10 +1518,12 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-0.0.37.tgz#7d6a934b35ee2f0ed0646d286eba559599021c9e"
   integrity sha512-vjFGX1zMTMz/kUp3xgfJcxMVLkMWVMrdlyc0RwVyve1y9jxwqNaT8wTcv6M51ylq2a/zn5lm8g7qPSoIS4uvZQ==
 
-"@types/ramda@0.26.9":
-  version "0.26.9"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.9.tgz#f0bbba59c04de9d29aaa1d1c0daedefc7244bb68"
-  integrity sha512-yozsk6sXE29kP/mzLCgZ6RFSwx2pD41ZgW1m4rk3meKyj4mw77ISxnu5Knc1tLaKQd2ocdd7Y0daCG678olPfw==
+"@types/ramda@0.26.28":
+  version "0.26.28"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.28.tgz#2984399fe11b9afdb1b092866c208adf656bd49b"
+  integrity sha512-MmrwJral3pMwm2DcwMYa/zNY+skSw6YWYrerl09tArju/80Gschg2q4NgphIn32ztzkbgoecx43tkeJtGICfCw==
+  dependencies:
+    ts-toolbelt "^4.7.7"
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -7646,6 +7648,11 @@ ts-node@8.1.1:
     make-error "^1.1.1"
     source-map-support "^0.5.6"
     yn "^3.0.0"
+
+ts-toolbelt@^4.7.7:
+  version "4.8.8"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-4.8.8.tgz#0ed56ab46cf0c12c11156076a68f1caf1fd9d55c"
+  integrity sha512-5QLdemct/ssqyVgmEIK1KKY7Y39fX05kanAdnp+O529Jk7dFct+4kgasvMGXagBIvLCUviksDCZs2Lo2/fp6BQ==
 
 tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.9.3"
